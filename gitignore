@@ -1,0 +1,32 @@
+# Database files and backups: never commit customer or test data
+*.bak
+*.mdf
+*.ldf
+*.ndf
+*.trn
+*.pkg
+
+# Output saved from test runs
+*.rpt
+*.log
+output/
+results/
+
+# SSMS and Visual Studio
+.vs/
+*.suo
+*.user
+*.ssmssqlproj.user
+*.dbmdl
+*.jfm
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
