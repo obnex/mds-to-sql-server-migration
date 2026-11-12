@@ -8,7 +8,7 @@
 
 Microsoft removed Master Data Services (MDS) from SQL Server 2025. These T-SQL scripts move your MDS models into ordinary SQL Server tables: they create the tables, copy the data, rebuild the relationships and recreate your subscription views.
 
-They are written by the team behind [SQL Spreads](https://sqlspreads.com/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration), and are free to use and change. For the full migration process, see our guide: [How to migrate from Microsoft MDS, step by step]([BLOG-LINK](https://sqlspreads.com/blog/how-to-migrate-from-microsoft-mds/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration)).
+They are written by the team behind [SQL Spreads](https://sqlspreads.com/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration), and are free to use and change. For the full migration process, see our guide: [How to migrate from Microsoft MDS, step by step](https://sqlspreads.com/blog/how-to-migrate-from-microsoft-mds/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration).
 
 ## What the scripts do
 
