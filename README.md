@@ -8,7 +8,7 @@
 
 Microsoft removed Master Data Services (MDS) from SQL Server 2025. These T-SQL scripts move your MDS models into ordinary SQL Server tables: they create the tables, copy the data, rebuild the relationships and recreate your subscription views.
 
-They are written by the team behind [SQL Spreads](https://sqlspreads.com), and are free to use and change. For the full migration process, see our guide: [How to migrate from Microsoft MDS, step by step](BLOG-LINK).
+They are written by the team behind [SQL Spreads](https://sqlspreads.com/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration), and are free to use and change. For the full migration process, see our guide: [How to migrate from Microsoft MDS, step by step](BLOG-LINK).
 
 ## What the scripts do
 
@@ -62,7 +62,7 @@ Step 1 also writes its settings and the full mapping (MDS entity to table, MDS a
 4. Run it with `@DryRun = 0`.
 5. Run steps 2 and 3 in order. Each needs only `@TargetDb`; the rest is read from the mapping written by step 1.
 
-Every script ends with a report: what was created, row counts compared with MDS, and anything it could not handle.
+Every script ends with a report of what was created and anything it could not handle. Step 3 also compares the row counts of the new views with MDS.
 
 ## Step by step
 
@@ -81,7 +81,7 @@ Main settings:
 
 Before anything is created, the script checks for name collisions, names longer than 128 characters and columns that would clash, and stops with a clear message.
 
-**Existing tables are protected.** If the target database already has a table with the same name as one the script creates, the script stops without changing anything and lists the tables. To run the migration again and replace them, set `@OverwriteExistingTables = 1`. The script never drops a database.
+**Existing tables are protected.** If the target database already has a table with the same name as one the script creates, the script stops without changing anything. To run the migration again and replace them, set `@OverwriteExistingTables = 1`. The script never drops a database.
 
 ### Step 2: Create lookups
 
@@ -142,7 +142,7 @@ Found a case the scripts do not handle? Please [open an issue](https://github.co
 
 ## Disclaimer
 
-The scripts only read from the MDS database; they never change it. They do write to the target database, and drop and recreate tables there that have the same names, so always point `@TargetDb` at a new database. On a large MDS database, run them outside office hours or against a restored backup, since copying the data reads every entity table. The scripts are provided as is, without warranty of any kind. See [LICENSE](LICENSE).
+The scripts only read from the MDS database; they never change it. They write to the target database: step 1 stops if tables with the same names already exist there, but with `@OverwriteExistingTables = 1` it drops and recreates them, so use a new database as the target. On a large MDS database, run them outside office hours or against a restored backup, since copying the data reads every entity table. The scripts are provided as is, without warranty of any kind. See [LICENSE](LICENSE).
 
 ## License
 
@@ -150,4 +150,4 @@ MIT. Copyright (c) 2026 Obnex Technologies AB. See [LICENSE](LICENSE).
 
 ## About SQL Spreads
 
-[SQL Spreads](https://sqlspreads.com) is an Excel add-in that lets business users view and edit SQL Server tables directly in Excel, with lookups, change tracking and validation. It is a straightforward replacement for the MDS Excel add-in on top of the tables these scripts create.
+[SQL Spreads](https://sqlspreads.com/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration) is an Excel add-in that lets business users view and edit SQL Server tables directly in Excel, with lookups, change tracking and validation. It is a straightforward replacement for the MDS Excel add-in on top of the tables these scripts create.
