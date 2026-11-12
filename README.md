@@ -8,7 +8,7 @@
 
 Microsoft removed Master Data Services (MDS) from SQL Server 2025. These T-SQL scripts move your MDS models into ordinary SQL Server tables: they create the tables, copy the data, rebuild the relationships and recreate your subscription views.
 
-They are written by the team behind [SQL Spreads](https://sqlspreads.com/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration), and are free to use and change. For the full migration process, see our guide: [How to migrate from Microsoft MDS, step by step](BLOG-LINK).
+They are written by the team behind [SQL Spreads](https://sqlspreads.com/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration), and are free to use and change. For the full migration process, see our guide: [How to migrate from Microsoft MDS, step by step]([BLOG-LINK](https://sqlspreads.com/blog/how-to-migrate-from-microsoft-mds/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration)).
 
 ## What the scripts do
 
@@ -128,7 +128,7 @@ All scripts can be run again. Each drops and recreates only its own objects. To 
 - Only the latest version of each model is migrated, and only active members.
 - Explicit hierarchies, collections, file attributes and the MDS transaction history are not migrated.
 - Recursive derived hierarchies and hierarchies with a many-to-many level are not recreated as subscription views.
-- Business rules are not migrated yet; a script for them is planned. Until then, see our guide for how to convert them
+- Business rules are not migrated yet; a script for them is planned. Until then, see [our guide](https://sqlspreads.com/blog/how-to-migrate-from-microsoft-mds/?utm_source=github&utm_medium=referral&utm_campaign=mds-to-sql-server-migration#business-rules) for how to convert them
   to SQL Server constraints. Note that MDS saves data that breaks a rule and marks it as invalid, while a SQL Server
   constraint rejects it, so expect existing rows that break your rules.
 - Security (MDS users, groups and permissions) is not migrated.
